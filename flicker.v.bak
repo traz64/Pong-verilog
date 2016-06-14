@@ -1,0 +1,7 @@
+module twoclock (cloc,flick)
+input cloc
+output reg cloc
+reg [16:0] lol
+always@(posedge cloc) lol <= lol + 1;
+if (lol>125000) begin flick<=~flick; lol<=0; end
+endmodule

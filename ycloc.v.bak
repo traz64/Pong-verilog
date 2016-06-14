@@ -1,0 +1,12 @@
+module xcloc (cloc,bigtic,reset0,xmov);
+input cloc, bigtic,reset0;
+output reg xmov;
+reg [16:0] lol;
+reg [16:0] tic;
+always@(posedge reset0) tic<=6250000;
+always@(posedge cloc)begin
+lol <= lol + 1;
+if (lol>tic) begin xmov<=~xmov; lol<=0; end
+end
+always@(posedge bigtic)tic<=tic/1.3;
+endmodule
